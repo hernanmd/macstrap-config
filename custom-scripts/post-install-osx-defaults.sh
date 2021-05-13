@@ -195,13 +195,13 @@ case $applyConfiguration in
         printf "\t- Set language and text formats\n"
         # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
         # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
-        defaults write NSGlobalDomain AppleLanguages -array "en" "de"
-        defaults write NSGlobalDomain AppleLocale -string "en_US@currency=CHF"
+        defaults write NSGlobalDomain AppleLanguages -array "es" "en"
+        defaults write NSGlobalDomain AppleLocale -string "es_ES@currency=USD"
         defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
         defaults write NSGlobalDomain AppleMetricUnits -bool true
 
         printf "\t- Set the timezone; see 'sudo systemsetup -listtimezones' for other values\n"
-        sudo systemsetup -settimezone "Europe/Zurich" > /dev/null
+        sudo systemsetup -settimezone "Europe/Paris" > /dev/null
 
         ###############################################################################
         echo
@@ -629,26 +629,26 @@ case $applyConfiguration in
         defaults write com.apple.terminal StringEncodings -array 4
 
         # Only apply a custom terminal theme if not in CI, as on CI the command times out.
-        if [ -z "${CI-}" ]; then
+        #if [ -z "${CI-}" ]; then
 
-            printf "\t- Use a modified version of the Afterglow theme by default in Terminal.app\n"
-            osascript -e '
-            tell application "Terminal"
+        #    printf "\t- Use a modified version of the Afterglow theme by default in Terminal.app\n"
+        #    osascript -e '
+        #    tell application "Terminal"
 
-                (* Open the custom theme so that it gets added to the list
-                of available terminal themes (note: this will open two
-                additional terminal windows). *)
-                do shell script "open $HOME/init/Afterglow.terminal"
+        #        (* Open the custom theme so that it gets added to the list
+        #        of available terminal themes (note: this will open two
+        #        additional terminal windows). *)
+        #        do shell script "open $HOME/init/Afterglow.terminal"
 
-                (* Wait a little bit to ensure that the custom theme is added. *)
-                delay 1
+         #       (* Wait a little bit to ensure that the custom theme is added. *)
+         #       delay 1
 
-                (* Set the custom theme as the default terminal theme. *)
-                set default settings to settings set "Afterglow"
+         #       (* Set the custom theme as the default terminal theme. *)
+         #       set default settings to settings set "Afterglow"
 
-            end tell'
+         #  end tell'
 
-        fi
+        # fi
 
         printf "\t- Enable Secure Keyboard Entry in Terminal.app\n"
         # See: https://security.stackexchange.com/a/47786/8918
