@@ -7,23 +7,22 @@ brew install gpg
 # Install ASDF Java plugin
 asdf plugin add java || true
 
-# Install Java 7
-asdf install java zulu-7.44.0.11 || true
-
 # Install Java 8
-asdf install java adoptopenjdk-8.0.282+8 || true
+asdf install java liberica-8u312+7 || true
 
 # Install Java 11 and set it globally as default
-asdf install java adoptopenjdk-11.0.10+9 || true
-asdf global java adoptopenjdk-11.0.10+9 || true
+asdf install java liberica-11.0.13+8 || true
+asdf global java liberica-11.0.13+8 || true
 
-# Install Java 15
-asdf install java adoptopenjdk-15.0.2+7 || true
+# Install Java 16
+asdf install java liberica-16.0.2+7 || true
+
+# Install Java 17
+asdf install java liberica-17.0.1+12 || true
 
 # Install ASDF NodeJS plugin
 asdf plugin add nodejs || true
-${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring
 
-# Install NodeJS 12.13.1 and set it globally as default
-asdf install nodejs 12.13.1 || true
-asdf global nodejs 12.13.1 || true
+# Install NodeJS 17.0.1 and set it globally as default
+asdf install nodejs 17.0.1 || true
+asdf global nodejs 17.0.1 || true
